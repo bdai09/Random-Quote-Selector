@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+//import 'bootstrap/dist/css/boostrap.css'
 import './App.css';
 
 
@@ -36,7 +37,7 @@ text: 'In Space, all warriors are Cold Warriors.',
   author: '-Kirk'
 }];
 
-class DisplayQuote extends React.Component {
+class DisplayQuote extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -61,8 +62,8 @@ class DisplayQuote extends React.Component {
   } 
   render() {
     return (
-     <div id="quote-box">
-        <p id="text">{this.state.quote.text}</p>
+     <div id="quote-box" class="col-md-6 col-md-offset-3">
+        <p id="text" color="red">{this.state.quote.text}</p>
         <p id="author">{this.state.quote.author}</p>
         <button id="tweet-quote" onClick={this.tweetQuote}>tweet-quote</button>
         <button id="new-quote" onClick={this.handleNewQuote}>new-quote</button>
