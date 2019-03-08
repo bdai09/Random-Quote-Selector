@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/boostrap.css'
+import 'bootstrap/dist/css/bootstrap.css'
 import './App.css';
 
 
@@ -62,7 +62,7 @@ class DisplayQuote extends Component {
   } 
   render() {
     return (
-     <div id="quote-box" class="col-md-6 col-md-offset-3">
+     <div id="quote-box" className="text-center">
         <p className="text">{this.state.quote.text}</p>
         <p className="author">{this.state.quote.author}</p>
         <button className="tweet-quote" onClick={this.tweetQuote}>tweet-quote</button>
