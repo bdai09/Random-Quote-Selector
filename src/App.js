@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-//import 'bootstrap/dist/css/boostrap.css'
+import 'bootstrap/dist/css/boostrap.css'
 import './App.css';
 
 
@@ -63,10 +63,10 @@ class DisplayQuote extends Component {
   render() {
     return (
      <div id="quote-box" class="col-md-6 col-md-offset-3">
-        <p id="text" color="red">{this.state.quote.text}</p>
-        <p id="author">{this.state.quote.author}</p>
-        <button id="tweet-quote" onClick={this.tweetQuote}>tweet-quote</button>
-        <button id="new-quote" onClick={this.handleNewQuote}>new-quote</button>
+        <p className="text">{this.state.quote.text}</p>
+        <p className="author">{this.state.quote.author}</p>
+        <button className="tweet-quote" onClick={this.tweetQuote}>tweet-quote</button>
+        <button className="new-quote" onClick={this.handleNewQuote}>new-quote</button>
       </div>
     );
   }
