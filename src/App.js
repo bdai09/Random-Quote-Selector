@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css'
+import { Container, Row, Col } from 'react-bootstrap';
+import { Bounce, Shake } from 'react-motions';
 import './App.css';
+import '../node_modules/font-awesome/css/font-awesome.min.css'
 
 
 /******random quote machine*******/
@@ -62,15 +65,31 @@ class DisplayQuote extends Component {
   } 
   render() {
     return (
-     <div id="quote-box" className="text-center">
+     <Container>
         <p className="text">{this.state.quote.text}</p>
-        <p className="author">{this.state.quote.author}</p>
-        <button className="tweet-quote" onClick={this.tweetQuote}>tweet-quote</button>
-        <button className="new-quote" onClick={this.handleNewQuote}>new-quote</button>
-      </div>
+        
+        <p className="text text-right">{this.state.quote.author}</p>
+      
+        <Row>
+          <Col xs={6} sm={5} md={4} lg={3}>
+            <button className="btn btn-block btn-primary" ><i className="fa fa-thumbs-up"></i>Like</button>
+          </Col>
+          <Col xs={6} sm={5} md={5} lg={3}>
+            <button className="btn btn-block btn-info" onClick={this.tweetQuote}><i className="fa fa-twitter"></i>Tweet</button>
+          </Col>    
+          <Col xs={0} sm={0} md={0} lg={3}>
+          </Col>
+          <Bounce duration={4} infinite>
+          <Col xs={12} sm={12} md={12} lg={12}>
+          <div className="text-right">
+            <button className="btn btn-success" onClick={this.handleNewQuote}>New-Quote</button>
+            </div>
+          </Col>
+          </Bounce>
+        </Row>
+      </Container>
     );
   }
 };
 //ReactDOM.render(<DisplayQuote />,document.getElementById('root'));
-
 export default DisplayQuote;
