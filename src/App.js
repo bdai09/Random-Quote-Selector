@@ -39,19 +39,29 @@ text: 'In Space, all warriors are Cold Warriors.',
   text: 'How we deal with death is at least as important as how we deal with life',
   author: '-Kirk'
 }];
-
+const likelist=[];
 class DisplayQuote extends Component {
   constructor(props) {
     super(props);
     this.state = {
       quote: quotes[0],
       currentIdx: 0,
+      Like: "No"
     };
    this.tweetQuote = this.tweetQuote.bind(this);
+   this.likeQuote = this.likeQuote.bind(this);
     this.handleNewQuote = this.handleNewQuote.bind(this);
+    this.likeListAdd = this.likeListAdd.bind(this);
+    this.likeListRemove = this.likeListRemove.bind(this);
+
  }
   tweetQuote(event) {
   //<a href=""twitter.com/intent/tweet"" />
+  }
+  likeQuote(){
+    this.setState({
+      Like: "Yes"
+    })  
   }
   handleNewQuote() {  
     let rqm;
@@ -61,18 +71,35 @@ class DisplayQuote extends Component {
     this.setState({
       quote: quotes[rqm],
       currentIdx: rqm,
+      Like: "No"
     })      
   } 
+  likeListAdd(){
+    var cnt=true;
+    if(this.Like=="Yes") {
+      likelist.map((i)=>{
+        if(i.currentIdx==this.currentIdx) cnt=false;
+      });
+      if(cnt==true) likelist.push(this);
+    }   
+  }
+
+  likeListRemove(){
+
+
+
+  }
   render() {
     return (
      <Container>
+       <div className="contain">
         <p className="text">{this.state.quote.text}</p>
         
         <p className="text text-right">{this.state.quote.author}</p>
       
         <Row>
           <Col xs={6} sm={5} md={4} lg={3}>
-            <button className="btn btn-block btn-primary" ><i className="fa fa-thumbs-up"></i>Like</button>
+            <button className="btn btn-block btn-primary" onClick={this.likeListAdd}><i className="fa fa-thumbs-up"></i>Like</button>
           </Col>
           <Col xs={6} sm={5} md={5} lg={3}>
             <button className="btn btn-block btn-info" onClick={this.tweetQuote}><i className="fa fa-twitter"></i>Tweet</button>
@@ -87,9 +114,16 @@ class DisplayQuote extends Component {
           </Col>
           </Bounce>
         </Row>
+        </div>
+        <div className="board">
+          <p>Favourate Board</p> 
+           
+           
+          </div>
       </Container>
     );
   }
 };
 //ReactDOM.render(<DisplayQuote />,document.getElementById('root'));
 export default DisplayQuote;
+
