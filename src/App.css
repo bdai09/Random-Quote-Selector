@@ -31,3 +31,16 @@
   font: bold 20px solid;
  
 }
+.contain blockquote p:first-child::before{
+  content:'\201C';
+  color:#29aeec;
+  font-size: 6em;
+  font-weight: 700;
+  opacity: .3;
+  position: absolute;
+  top:-.05em;
+  left:.1em;
+  text-shadow: none;
+  z-index :-300;
+
+}

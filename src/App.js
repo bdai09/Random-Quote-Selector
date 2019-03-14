@@ -82,7 +82,7 @@ class DisplayQuote extends Component {
     return (
      <Container>
        <div className="contain">
-        <p className="text">{this.state.quote.text}</p>
+       <blockquote><p className="text">{this.state.quote.text}</p></blockquote>
         
         <p className="text text-right">{this.state.quote.author}</p>
       
