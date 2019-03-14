@@ -48,16 +48,14 @@ class DisplayQuote extends Component {
       currentIdx: 0,
       Like: "No"
     };
-   this.tweetQuote = this.tweetQuote.bind(this);
+   //this.tweetQuote = this.tweetQuote.bind(this);
    this.likeQuote = this.likeQuote.bind(this);
     this.handleNewQuote = this.handleNewQuote.bind(this);
     //this.likeListAdd = this.likeListAdd.bind(this);
     this.likeListRemove = this.likeListRemove.bind(this);
 
  }
-  tweetQuote(event) {
-  //<a href=""twitter.com/intent/tweet"" />
-  }
+
   likeQuote(){
     this.setState({
       Like: "Yes"
@@ -103,8 +101,10 @@ class DisplayQuote extends Component {
             <button className="btn btn-block btn-primary" onClick={this.likeQuote}><i className="fa fa-thumbs-up"></i>Like</button>
           </Col>
           <Col xs={6} sm={5} md={5} lg={3}>
-            <button className="btn btn-block btn-info" onClick={this.tweetQuote}><i className="fa fa-twitter"></i>Tweet</button>
-          </Col>    
+          <a target="_blank" href={'https://twitter.com/intent/tweet/?text='+this.state.quote.text+
+          ' - '+this.state.quote.author}>
+          <button className="btn btn-block btn-info"><i className="fa fa-twitter"></i>Tweet</button></a>
+          </Col>   
           <Col xs={0} sm={0} md={0} lg={3}>
           </Col>
           <Bounce duration={4} infinite>
@@ -118,7 +118,9 @@ class DisplayQuote extends Component {
         </div>
         <div className="board">
           <p>Favourate Board</p> 
-           <p>{this.state.like} </p>       
+           {this.state.Like==="Yes" && 
+           <p><span className="text">{this.state.quote.text}</span>
+          <span className="text text-right">{this.state.quote.author}</span></p>}      
           </div>
       </Container>
     );
