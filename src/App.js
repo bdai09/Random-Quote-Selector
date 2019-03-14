@@ -39,7 +39,7 @@ text: 'In Space, all warriors are Cold Warriors.',
   text: 'How we deal with death is at least as important as how we deal with life',
   author: '-Kirk'
 }];
-const likelist=[];
+//const likelist=[];
 class DisplayQuote extends Component {
   constructor(props) {
     super(props);
@@ -51,7 +51,7 @@ class DisplayQuote extends Component {
    this.tweetQuote = this.tweetQuote.bind(this);
    this.likeQuote = this.likeQuote.bind(this);
     this.handleNewQuote = this.handleNewQuote.bind(this);
-    this.likeListAdd = this.likeListAdd.bind(this);
+    //this.likeListAdd = this.likeListAdd.bind(this);
     this.likeListRemove = this.likeListRemove.bind(this);
 
  }
@@ -74,20 +74,21 @@ class DisplayQuote extends Component {
       Like: "No"
     })      
   } 
-  likeListAdd(){
+/*likeListAdd(){
     var cnt=true;
-    if(this.Like=="Yes") {
+    if(this.Like==="Yes") {
       likelist.map((i)=>{
         if(i.currentIdx==this.currentIdx) cnt=false;
       });
       if(cnt==true) likelist.push(this);
-    }   
-  }
+    }  
+    console.log(likelist) ;
+  }*/
 
   likeListRemove(){
-
-
-
+    this.setState({
+      Like: "No"
+    }) 
   }
   render() {
     return (
@@ -99,7 +100,7 @@ class DisplayQuote extends Component {
       
         <Row>
           <Col xs={6} sm={5} md={4} lg={3}>
-            <button className="btn btn-block btn-primary" onClick={this.likeListAdd}><i className="fa fa-thumbs-up"></i>Like</button>
+            <button className="btn btn-block btn-primary" onClick={this.likeQuote}><i className="fa fa-thumbs-up"></i>Like</button>
           </Col>
           <Col xs={6} sm={5} md={5} lg={3}>
             <button className="btn btn-block btn-info" onClick={this.tweetQuote}><i className="fa fa-twitter"></i>Tweet</button>
@@ -117,8 +118,7 @@ class DisplayQuote extends Component {
         </div>
         <div className="board">
           <p>Favourate Board</p> 
-           
-           
+           <p>{this.state.like} </p>       
           </div>
       </Container>
     );
