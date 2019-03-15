@@ -8,15 +8,9 @@
   transform:translate(-50%,-50%);
 
 }
-.background {
-  background: url(https://img.freepik.com/free-vector/watercolour-abstract-background_1048-9210.jpg?size=626&ext=jpg);
-  height: 50%; 
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+
 .board{
-  background-color:red;
+  background-color:whitesmoke;
   position: absolute;
   width:60%;
   top: 60%;
@@ -28,6 +22,12 @@
 .text {
   margin:5% 5%;
   color: white;
+  font: bold 20px solid;
+ 
+}
+.text2 {
+  margin:5% 5%;
+  color: black;
   font: bold 20px solid;
  
 }

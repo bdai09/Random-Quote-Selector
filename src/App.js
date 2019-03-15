@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css'
 import { Container, Row, Col } from 'react-bootstrap';
 import { Bounce, Shake } from 'react-motions';
+import {Helmet}from 'react-helmet';
 import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css'
 
 
 /******random quote machine*******/
+var colors=['#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857"];
+
 const quotes = [{
   text: 'Well Bones, do the new medical facilities meet with your approval?',
   author: '-Kirk'
@@ -46,6 +49,7 @@ class DisplayQuote extends Component {
     this.state = {
       quote: quotes[0],
       currentIdx: 0,
+      currentcolor:'#16a085',
       Like: "No"
     };
    //this.tweetQuote = this.tweetQuote.bind(this);
@@ -63,14 +67,18 @@ class DisplayQuote extends Component {
   }
   handleNewQuote() {  
     let rqm;
+    let rqmcolor
     do {
-       rqm = Math.floor(Math.random() * quotes.length)
-    } while (this.state.currentIdx === rqm)
+       rqm = Math.floor(Math.random() * quotes.length);
+      rqmcolor = Math.floor(Math.random() * colors.length);
+
+    } while (this.state.currentIdx === rqm&&this.state.currentcolor === rqmcolor )
     this.setState({
       quote: quotes[rqm],
       currentIdx: rqm,
+      currentcolor:colors[rqmcolor],
       Like: "No"
-    })      
+    })  
   } 
 
   likeListRemove(){
@@ -81,11 +89,14 @@ class DisplayQuote extends Component {
   render() {
     return (
      <Container>
+       <Helmet>
+         <body style={'background-color:'+this.state.currentcolor}></body>
+        </Helmet>
        <div className="contain">
        <blockquote><p className="text">{this.state.quote.text}</p></blockquote>
         
         <p className="text text-right">{this.state.quote.author}</p>
-      
+        
         <Row>
           <Col xs={6} sm={5} md={4} lg={3}>
             <button className="btn btn-block btn-primary" onClick={this.likeQuote}><i className="fa fa-thumbs-up"></i>Like</button>
@@ -109,13 +120,18 @@ class DisplayQuote extends Component {
         <div className="board">
           <p>Favourate Board</p> 
            {this.state.Like==="Yes" && 
-           <p><span className="text">{this.state.quote.text}</span>
-          <span className="text text-right">{this.state.quote.author}</span></p>}      
+           <p>
+           <span className="text2">{this.state.quote.text}</span>
+          <span className="text2">{this.state.quote.author}</span></p>}      
           </div>
       </Container>
     );
   }
 };
+
+
+
+
 //ReactDOM.render(<DisplayQuote />,document.getElementById('root'));
 export default DisplayQuote;
 
