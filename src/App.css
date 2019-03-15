@@ -26,9 +26,9 @@
  
 }
 .text2 {
-  margin:5% 5%;
+  margin:5% ;
   color: black;
-  font: bold 20px solid;
+  font: bold 15px solid;
  
 }
 .contain blockquote p:first-child::before{

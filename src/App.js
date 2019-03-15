@@ -118,12 +118,11 @@ class DisplayQuote extends Component {
         </Row>
         </div>
         <div className="board">
-          <p>Favourate Board</p> 
+          <p className="text2">Favourate Board</p>
            {this.state.Like==="Yes" && 
-           <p>
-           <span className="text2">{this.state.quote.text}</span>
-          <span className="text2">{this.state.quote.author}</span></p>}      
-          </div>
+           <div><p className="text2">{this.state.quote.text}</p>
+          <p className="text2 text-right">{this.state.quote.author}</p></div>}      
+        </div>
       </Container>
     );
   }
