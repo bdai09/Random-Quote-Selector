@@ -9,8 +9,8 @@ import '../node_modules/font-awesome/css/font-awesome.min.css'
 
 
 /******random quote machine*******/
-var colors=['#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857"];
-
+//var colors=['#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857"];
+var colors=['#87aeed','#f4aea6','#f44d3a','#f7ae80','#f9d3bb','#f78b47','#fcd685','#fcc653','#f2e680','#fff719','#c3f977','#aaed87','#87f981','#81f9c3','#36f7a0','#3deef7','#62c3f7','#d495f4'];
 const quotes = [{
   text: 'Well Bones, do the new medical facilities meet with your approval?',
   author: '-Kirk'
@@ -49,7 +49,7 @@ class DisplayQuote extends Component {
     this.state = {
       quote: quotes[0],
       currentIdx: 0,
-      currentcolor:'#16a085',
+      currentcolor:'#f4aea6',
       Like: "No"
     };
    //this.tweetQuote = this.tweetQuote.bind(this);
