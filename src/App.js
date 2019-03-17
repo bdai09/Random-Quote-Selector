@@ -7,7 +7,7 @@ import {Helmet}from 'react-helmet';
 import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css'
 import FlipMove from 'react-flip-move';
-//import articles from '../data/articles';
+//import Toggle from './Toggle.jsx';
 
 /******random quote machine*******/
 //var colors=['#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857"];
@@ -86,6 +86,10 @@ class DisplayQuote extends Component {
       Like: "No"
     }) 
   }
+
+  clickHandler()
+  {throttle(() => this.moveArticle('articles', 'removedArticles', article.id), 800)}
+
   render() {
     return (
      <Container>
@@ -118,38 +122,23 @@ class DisplayQuote extends Component {
         </Row>
         </div>
         <div className="board">
-          <p className="text2">Favourate Board</p>
+        <Shake duration={4}>
+          <div className="div1"><p className="text2">Favourate Board</p></div></Shake>
           {this.state.Like==="Yes" && listClass.push(this.state.quote)}
            <FlipMove duration={750} easing="ease-out">
               {listClass.map(i => (
-              <div><p className="text2">{i.text}</p>
-              <p className="text2 text-right">{i.author}</p></div>
+              <li><p className="text2">{i.text}</p>
+              
+              <span className="text2">{i.author}</span>
+              <span><button className="btn btn-danger" onClick={i.clickHandler}><i className="fa fa-close" /></button>           
+              </span></li>
               ))}
           </FlipMove>
-
-
         </div>
       </Container>
     );
   }
 };
-// class ListItem extends Component {
-//  render() {
- //   if(this.state.Like=="Yes")
-  //  listClass=listClass.push(this.state.quote);
-   
-  //  return (
-   //   <li id={this.props.id} className={listClass} >
-    //    <h3>{this.props.name}</h3>
-   //     <h5>{this.state.quote.author}</h5>
-    //    <button onClick={this.props.clickHandler}>
-    //      <i className="fa fa-close" />
-    //    </button>
-    //  </li>
-  //  );
- // }
-//};
-
 
 
 //ReactDOM.render(<DisplayQuote />,document.getElementById('root'));
