@@ -7,10 +7,9 @@ import {Helmet}from 'react-helmet';
 import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css'
 import FlipMove from 'react-flip-move';
-//import Toggle from './Toggle.jsx';
+import { Throttle } from 'react-throttle';
 
 /******random quote machine*******/
-//var colors=['#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857"];
 var colors=['#87aeed','#f4aea6','#f44d3a','#f7ae80','#f9d3bb','#f78b47','#fcd685','#fcc653','#f2e680','#fff719','#c3f977','#aaed87','#87f981','#81f9c3','#36f7a0','#3deef7','#62c3f7','#d495f4'];
 const quotes = [{
   text: 'Well Bones, do the new medical facilities meet with your approval?',
@@ -43,7 +42,7 @@ text: 'In Space, all warriors are Cold Warriors.',
   text: 'How we deal with death is at least as important as how we deal with life',
   author: '-Kirk'
 }];
-const listClass = [];
+var listClass = [];
 
 class DisplayQuote extends Component {
   constructor(props) {
@@ -56,7 +55,7 @@ class DisplayQuote extends Component {
     };
    this.likeQuote = this.likeQuote.bind(this);
     this.handleNewQuote = this.handleNewQuote.bind(this);
-    this.likeListRemove = this.likeListRemove.bind(this);
+    this.update = this.update.bind(this);
 
  }
 
@@ -81,15 +80,13 @@ class DisplayQuote extends Component {
     })  
   } 
 
-  likeListRemove(){
+  update()
+  { 
+    //listClass = [].concat( listClass.splice(i, 1));
     this.setState({
-      Like: "No"
-    }) 
+      currentcolor:'#f4aea6'
+    })  
   }
-
-  clickHandler()
-  {throttle(() => this.moveArticle('articles', 'removedArticles', article.id), 800)}
-
   render() {
     return (
      <Container>
@@ -126,11 +123,12 @@ class DisplayQuote extends Component {
           <div className="div1"><p className="text2">Favourate Board</p></div></Shake>
           {this.state.Like==="Yes" && listClass.push(this.state.quote)}
            <FlipMove duration={750} easing="ease-out">
-              {listClass.map(i => (
+              {listClass.map((i,index) => (
               <li><p className="text2">{i.text}</p>
               
               <span className="text2">{i.author}</span>
-              <span><button className="btn btn-danger" onClick={i.clickHandler}><i className="fa fa-close" /></button>           
+        <span><button className="btn btn-danger" onClick={this.update}>
+              <i className="fa fa-close" /></button>           
               </span></li>
               ))}
           </FlipMove>
@@ -139,7 +137,7 @@ class DisplayQuote extends Component {
     );
   }
 };
-
+//listClass = [].concat( listClass.splice(i, 1));
 
 //ReactDOM.render(<DisplayQuote />,document.getElementById('root'));
 export default DisplayQuote;
