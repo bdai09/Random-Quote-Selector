@@ -6,7 +6,8 @@ import { Bounce, Shake } from 'react-motions';
 import {Helmet}from 'react-helmet';
 import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css'
-
+import FlipMove from 'react-flip-move';
+//import articles from '../data/articles';
 
 /******random quote machine*******/
 //var colors=['#16a085', '#27ae60', '#2c3e50', '#f39c12', '#e74c3c', '#9b59b6', '#FB6964', '#342224', "#472E32", "#BDBB99", "#77B1A9", "#73A857"];
@@ -42,7 +43,8 @@ text: 'In Space, all warriors are Cold Warriors.',
   text: 'How we deal with death is at least as important as how we deal with life',
   author: '-Kirk'
 }];
-//const likelist=[];
+const listClass = [];
+
 class DisplayQuote extends Component {
   constructor(props) {
     super(props);
@@ -52,10 +54,8 @@ class DisplayQuote extends Component {
       currentcolor:'#f4aea6',
       Like: "No"
     };
-   //this.tweetQuote = this.tweetQuote.bind(this);
    this.likeQuote = this.likeQuote.bind(this);
     this.handleNewQuote = this.handleNewQuote.bind(this);
-    //this.likeListAdd = this.likeListAdd.bind(this);
     this.likeListRemove = this.likeListRemove.bind(this);
 
  }
@@ -119,15 +119,36 @@ class DisplayQuote extends Component {
         </div>
         <div className="board">
           <p className="text2">Favourate Board</p>
-           {this.state.Like==="Yes" && 
-           <div><p className="text2">{this.state.quote.text}</p>
-          <p className="text2 text-right">{this.state.quote.author}</p></div>}      
+          {this.state.Like==="Yes" && listClass.push(this.state.quote)}
+           <FlipMove duration={750} easing="ease-out">
+              {listClass.map(i => (
+              <div><p className="text2">{i.text}</p>
+              <p className="text2 text-right">{i.author}</p></div>
+              ))}
+          </FlipMove>
+
+
         </div>
       </Container>
     );
   }
 };
-
+// class ListItem extends Component {
+//  render() {
+ //   if(this.state.Like=="Yes")
+  //  listClass=listClass.push(this.state.quote);
+   
+  //  return (
+   //   <li id={this.props.id} className={listClass} >
+    //    <h3>{this.props.name}</h3>
+   //     <h5>{this.state.quote.author}</h5>
+    //    <button onClick={this.props.clickHandler}>
+    //      <i className="fa fa-close" />
+    //    </button>
+    //  </li>
+  //  );
+ // }
+//};
 
 
 
