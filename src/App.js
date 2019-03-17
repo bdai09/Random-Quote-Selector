@@ -55,7 +55,7 @@ class DisplayQuote extends Component {
     };
    this.likeQuote = this.likeQuote.bind(this);
     this.handleNewQuote = this.handleNewQuote.bind(this);
-    this.update = this.update.bind(this);
+    //this.update = this.update.bind(this);
 
  }
 
@@ -80,9 +80,10 @@ class DisplayQuote extends Component {
     })  
   } 
 
-  update()
+  update(i)
   { 
-    //listClass = [].concat( listClass.splice(i, 1));
+    if (listClass.length!==1){listClass = listClass.splice(i, 1);alert(listClass)}
+    else {listClass=[]}
     this.setState({
       currentcolor:'#f4aea6'
     })  
@@ -119,17 +120,20 @@ class DisplayQuote extends Component {
         </Row>
         </div>
         <div className="board">
+         <Helmet>
+         <div style={'background-color:'+this.state.currentcolor}></div>
+        </Helmet>
         <Shake duration={4}>
-          <div className="div1"><p className="text2">Favourate Board</p></div></Shake>
-          {this.state.Like==="Yes" && listClass.push(this.state.quote)}
-           <FlipMove duration={750} easing="ease-out">
+          <div><p className="text2 item text-center">Favourate Board</p></div></Shake>
+          {(() => { if(this.state.Like==="Yes" &&listClass!==[]&& listClass.findIndex(x=>x.text===this.state.quote.text)===-1){listClass.push(this.state.quote);
+           }  })()}   
+           <FlipMove duration={350} staggerDurationBy={20} staggerDelayBy={20}>
               {listClass.map((i,index) => (
-              <li><p className="text2">{i.text}</p>
-              
-              <span className="text2">{i.author}</span>
-        <span><button className="btn btn-danger" onClick={this.update}>
+              <li className="text2 item"><span>{i.text}<span className="pull-right"><button className="btn btn-danger" onClick={() => this.update(index)}>
               <i className="fa fa-close" /></button>           
-              </span></li>
+              </span><br/>
+              {i.author}</span>
+              </li>
               ))}
           </FlipMove>
         </div>

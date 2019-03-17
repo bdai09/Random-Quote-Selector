@@ -6,11 +6,10 @@
   left:50%;
   -ms-transform: translate(-50%,-50%);
   transform:translate(-50%,-50%);
-
+  border-radius: 10px;
 }
 
 .board{
-  background-color:whitesmoke;
   position: absolute;
   width:60%;
   top: 60%;
@@ -29,6 +28,7 @@
   margin:5% ;
   color: black;
   font: bold 15px solid;
+  background-color: whitesmoke;
  
 }
 .contain blockquote p:first-child::before{
@@ -44,3 +44,13 @@
   z-index :-300;
 
 }
+.item {
+  
+  margin: 10px;
+  height: 55px;
+  border: 3px solid #777;
+  background-color: #fafafa;
+  border-radius: 15px;
+ 
+}
+  
