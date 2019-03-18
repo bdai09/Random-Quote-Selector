@@ -42,27 +42,34 @@ text: 'In Space, all warriors are Cold Warriors.',
   text: 'How we deal with death is at least as important as how we deal with life',
   author: '-Kirk'
 }];
-var listClass = [];
+
 
 class DisplayQuote extends Component {
   constructor(props) {
     super(props);
     this.state = {
       quote: quotes[0],
+      listClass: [],
       currentIdx: 0,
       currentcolor:'#f4aea6',
       Like: "No"
     };
    this.likeQuote = this.likeQuote.bind(this);
     this.handleNewQuote = this.handleNewQuote.bind(this);
-    //this.update = this.update.bind(this);
-
+    this.update = this.update.bind(this);
+    
  }
-
   likeQuote(){
     this.setState({
       Like: "Yes"
-    })  
+    }) 
+     if(this.state.listClass.findIndex(x=>x.text===this.state.quote.text)===-1)
+     {
+       this.setState({
+         listClass: [...this.state.listClass, this.state.quote]
+       })
+      
+    }  
   }
   handleNewQuote() {  
     let rqm;
@@ -82,13 +89,25 @@ class DisplayQuote extends Component {
 
   update(i)
   { 
-    if (listClass.length!==1){listClass = listClass.splice(i, 1);alert(listClass)}
-    else {listClass=[]}
+    alert(i);
+    // for(const arr of this.state.listClass){
+    //   alert(arr.text);
+    // }  
+   
+    //   const newArr = 
+    //   for(const arr of newArr){
+    //     alert(arr.text);
+    //   }  
+    //         
     this.setState({
-      currentcolor:'#f4aea6'
-    })  
+          listClass: [...this.state.listClass.slice(0, i), ...this.state.listClass.slice(i + 1)],
+          currentcolor:'#f4aea6'
+      });
+    
   }
   render() {
+    
+    
     return (
      <Container>
        <Helmet>
@@ -125,11 +144,17 @@ class DisplayQuote extends Component {
         </Helmet>
         <Shake duration={4}>
           <div><p className="text2 item text-center">Favourate Board</p></div></Shake>
-          {(() => { if(this.state.Like==="Yes" &&listClass!==[]&& listClass.findIndex(x=>x.text===this.state.quote.text)===-1){listClass.push(this.state.quote);
-           }  })()}   
+             
            <FlipMove duration={350} staggerDurationBy={20} staggerDelayBy={20}>
-              {listClass.map((i,index) => (
-              <li className="text2 item"><span>{i.text}<span className="pull-right"><button className="btn btn-danger" onClick={() => this.update(index)}>
+              {this.state.listClass.map((i,index) => (
+              <li className="text2 item"><span>{i.text}<span className="pull-right"><button className="btn btn-danger" onClick={() => {
+                // (function foo(index) {
+        
+                //   this.update(index);
+                // }).bind(this)(index)
+                this.update(index);
+
+              } }>
               <i className="fa fa-close" /></button>           
               </span><br/>
               {i.author}</span>
