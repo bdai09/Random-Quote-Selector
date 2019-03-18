@@ -138,12 +138,7 @@ class DisplayQuote extends Component {
            <FlipMove duration={350} staggerDurationBy={20} staggerDelayBy={20}>
               {this.state.listClass.map((i,index) => (
               <li className="text2 item"><span>{i.text}<span className="pull-right"><button className="btn btn-danger" onClick={() => {
-                // (function foo(index) {
-                 // this.update(index);
-                //   this.update(index);
-                // }).bind(this)(index)
-                this.update(index);
-
+                this.update(index)
               } }>
               <i className="fa fa-close" /></button>           
               </span><br/>
