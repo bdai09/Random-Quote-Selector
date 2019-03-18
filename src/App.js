@@ -88,17 +88,7 @@ class DisplayQuote extends Component {
   } 
 
   update(i)
-  { 
-    alert(i);
-    // for(const arr of this.state.listClass){
-    //   alert(arr.text);
-    // }  
-   
-    //   const newArr = 
-    //   for(const arr of newArr){
-    //     alert(arr.text);
-    //   }  
-    //         
+  {      
     this.setState({
           listClass: [...this.state.listClass.slice(0, i), ...this.state.listClass.slice(i + 1)],
           currentcolor:'#f4aea6'
@@ -143,13 +133,13 @@ class DisplayQuote extends Component {
          <div style={'background-color:'+this.state.currentcolor}></div>
         </Helmet>
         <Shake duration={4}>
-          <div><p className="text2 item text-center">Favourate Board</p></div></Shake>
+          <div><span className="btn btn-secondary">Favourate Board</span></div></Shake>
              
            <FlipMove duration={350} staggerDurationBy={20} staggerDelayBy={20}>
               {this.state.listClass.map((i,index) => (
               <li className="text2 item"><span>{i.text}<span className="pull-right"><button className="btn btn-danger" onClick={() => {
                 // (function foo(index) {
-        
+                 // this.update(index);
                 //   this.update(index);
                 // }).bind(this)(index)
                 this.update(index);
