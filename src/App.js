@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css'
 import { Container, Row, Col } from 'react-bootstrap';
 import { Bounce, Shake } from 'react-motions';
@@ -7,7 +6,6 @@ import {Helmet}from 'react-helmet';
 import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css'
 import FlipMove from 'react-flip-move';
-import { Throttle } from 'react-throttle';
 
 /******random quote machine*******/
 var colors=['#87aeed','#f4aea6','#f44d3a','#f7ae80','#f9d3bb','#f78b47','#fcd685','#fcc653','#f2e680','#fff719','#c3f977','#aaed87','#87f981','#81f9c3','#36f7a0','#3deef7','#62c3f7','#d495f4'];
@@ -151,7 +149,6 @@ class DisplayQuote extends Component {
     );
   }
 };
-//listClass = [].concat( listClass.splice(i, 1));
 
 //ReactDOM.render(<DisplayQuote />,document.getElementById('root'));
 export default DisplayQuote;
