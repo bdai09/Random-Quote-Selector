@@ -2,7 +2,7 @@
   "name": "random_quote_machine",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://bdai09.github.io/Random-Quote-Selector/"
+  "homepage": "https://bdai09.github.io/Random-Quote-Selector/",
   "dependencies": {
     "@babel/core": "7.2.2",
     "@svgr/webpack": "4.1.0",
